@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PlayMaker JO — Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #65dd93;
+    --primary-container: #3fba74;
+    --primary-fixed: #82faad;
+    --tertiary: #88d7a1;
+    --tertiary-fixed: #a4f4bc;
+    --surface: #0f1512;
+    --surface-container: #1b211e;
+    --surface-container-high: #252b28;
+    --surface-container-highest: #303633;
+    --surface-bright: #343b37;
+    --on-surface: #dee4df;
+    --on-surface-variant: #bdcabd;
+    --outline: #879488;
+    --outline-variant: #3e4a40;
+    --on-primary: #00391d;
+  }
+
+  html, body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--on-surface);
+    background: var(--surface);
+  }
+
+  .slide {
+    width: 1280px;
+    height: 720px;
+    padding: 72px 96px;
+    page-break-after: always;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--surface);
+    color: var(--on-surface);
+  }
+  .slide:last-child { page-break-after: auto; }
+
+  /* Light slide variant — warm sage cream, same brand family */
+  .slide.light {
+    background: #eef2ec;
+    color: #101915;
+  }
+  .slide.light::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 85% 10%, rgba(101, 221, 147, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(63, 186, 116, 0.08) 0%, transparent 45%);
+    pointer-events: none;
+  }
+  .slide.light h1, .slide.light h2 { color: #101915; }
+  .slide.light h3, .slide.light h4 { color: #1f6b3f; }
+  .slide.light p { color: #3b4a42; }
+  .slide.light .tagline { color: #101915; }
+  .slide.light ul li { color: #3b4a42; }
+  .slide.light ul li strong { color: #101915; }
+  .slide.light ul li::before { background: #1f6b3f; }
+  .slide.light .eyebrow { color: #1f6b3f; }
+  .slide.light .eyebrow::before { background: #1f6b3f; }
+  .slide.light .quote { color: #1f6b3f; border-left-color: #1f6b3f; }
+  .slide.light .highlight { color: #1f6b3f; }
+  .slide.light .card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border-color: rgba(31, 107, 63, 0.18);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 4px 20px rgba(15, 25, 21, 0.04);
+  }
+  .slide.light .stat {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border-color: rgba(31, 107, 63, 0.18);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 4px 20px rgba(15, 25, 21, 0.04);
+  }
+  .slide.light .stat .val { color: #1f6b3f; }
+  .slide.light .stat .lbl { color: #5a6560; }
+  .slide.light th {
+    background: rgba(31, 107, 63, 0.08);
+    color: #1f6b3f;
+    border-bottom-color: rgba(31, 107, 63, 0.18);
+  }
+  .slide.light td { border-bottom-color: rgba(31, 107, 63, 0.12); color: #3b4a42; }
+  .slide.light td strong { color: #101915; }
+  .slide.light .roadmap-row { border-bottom-color: rgba(31, 107, 63, 0.15); }
+  .slide.light .roadmap-row strong { color: #101915; }
+  .slide.light .funds-row { border-bottom-color: rgba(31, 107, 63, 0.15); }
+  .slide.light .funds-row strong { color: #1f6b3f; }
+  .slide.light .divider { background: rgba(31, 107, 63, 0.18); }
+  .slide.light .page-footer { color: #7a8680; }
+  .slide.light .pill {
+    background: rgba(31, 107, 63, 0.12);
+    color: #1f6b3f;
+    border-color: rgba(31, 107, 63, 0.25);
+  }
+  .slide.light .logo-text { color: #101915; }
+  .slide.light .kinetic-grid {
+    background-image: radial-gradient(circle at 2px 2px, rgba(31, 107, 63, 0.13) 1px, transparent 0);
+  }
+  .slide.light .hero-glow {
+    background: radial-gradient(circle at 30% 40%, rgba(101, 221, 147, 0.22) 0%, rgba(238, 242, 236, 0) 60%);
+  }
+  .slide.light .avatar {
+    box-shadow: 0 8px 32px rgba(31, 107, 63, 0.25);
+  }
+  .slide.light .corner-mark { background: rgba(31, 107, 63, 0.9); }
+  .slide.light .corner-mark::after { border-left-color: #eef2ec; }
+  .slide.light .brand-strip { background: linear-gradient(90deg, #1f6b3f 0%, #3fba74 50%, transparent 100%); }
+
+  /* Kinetic dot-grid (from website) */
+  .kinetic-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 2px 2px, rgba(101, 221, 147, 0.08) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* Hero glow */
+  .hero-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(63, 186, 116, 0.25) 0%, rgba(15, 21, 18, 0) 60%);
+    pointer-events: none;
+  }
+
+  /* Unifying elements across all slides */
+  .corner-mark {
+    position: absolute;
+    top: 40px; left: 40px;
+    width: 28px; height: 28px;
+    background: var(--primary);
+    border-radius: 7px;
+    z-index: 3;
+    box-shadow: 0 4px 14px rgba(101, 221, 147, 0.4);
+  }
+  .corner-mark::after {
+    content: '';
+    position: absolute;
+    left: 9px; top: 7px;
+    width: 0; height: 0;
+    border-left: 10px solid var(--surface);
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+  }
+  .corner-brand {
+    position: absolute;
+    top: 44px; left: 80px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--on-surface-variant);
+    text-transform: uppercase;
+    z-index: 3;
+  }
+  .slide.light .corner-brand { color: #5a6560; }
+
+  .brand-strip {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 4px;
+    width: 60%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-container) 50%, transparent 100%);
+    z-index: 3;
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 44px; right: 96px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--outline);
+    text-transform: uppercase;
+    z-index: 3;
+  }
+  .slide.light .slide-number { color: #8a958f; }
+
+  .slide-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* Typography — Space Grotesk for headlines */
+  h1, h2, h3, .headline {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -1px;
+  }
+  h1 { font-size: 84px; font-weight: 700; line-height: 1.05; letter-spacing: -2px; }
+  h2 { font-size: 52px; font-weight: 700; line-height: 1.1; margin-bottom: 32px; }
+  h3 { font-size: 30px; font-weight: 600; margin-bottom: 14px; color: var(--primary); }
+  h4 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 10px; color: var(--primary); }
+  p  { font-size: 21px; line-height: 1.6; color: var(--on-surface-variant); }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--primary);
+  }
+  .tagline { font-size: 28px; font-weight: 400; margin-top: 28px; color: inherit; line-height: 1.4; }
+
+  ul { list-style: none; margin-top: 18px; }
+  ul li {
+    font-size: 21px;
+    line-height: 1.7;
+    color: var(--on-surface-variant);
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 14px;
+    width: 14px; height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
+  ul li strong { color: var(--on-surface); font-weight: 600; }
+
+  .quote {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    color: var(--primary);
+    border-left: 3px solid var(--primary);
+    padding-left: 24px;
+    margin-top: 32px;
+    font-weight: 500;
+  }
+
+  /* Grid layouts */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 24px; }
+
+  /* Glass card */
+  .card {
+    background: rgba(27, 33, 30, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--outline-variant);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .card h4 { margin-bottom: 10px; }
+  .card p { font-size: 18px; line-height: 1.5; }
+  .card ul li { font-size: 17px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 19px; }
+  th, td { text-align: left; padding: 16px 20px; border-bottom: 1px solid var(--outline-variant); }
+  th {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: var(--surface-container);
+  }
+  td { color: var(--on-surface-variant); }
+  td strong { color: var(--on-surface); }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .stat {
+    text-align: center;
+    background: rgba(27, 33, 30, 0.6);
+    border: 1px solid var(--outline-variant);
+    border-radius: 16px;
+    padding: 40px 20px;
+  }
+  .stat .val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+  .stat .lbl {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--on-surface-variant);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 12px;
+  }
+
+  /* Page footer */
+  .page-footer {
+    position: absolute;
+    bottom: 32px; left: 96px; right: 96px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    color: var(--outline);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  /* Logo */
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .logo-mark {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
+    border-radius: 14px;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(101, 221, 147, 0.3);
+  }
+  .logo-mark::after {
+    content: '';
+    position: absolute;
+    left: 18px; top: 14px;
+    width: 0; height: 0;
+    border-left: 20px solid var(--on-primary);
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+  }
+  .logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: inherit;
+    letter-spacing: -0.5px;
+  }
+
+  .big-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 96px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -3px;
+    line-height: 1;
+  }
+
+  .pill {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(101, 221, 147, 0.15);
+    color: var(--primary);
+    border: 1px solid rgba(101, 221, 147, 0.3);
+    border-radius: 999px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .highlight { color: var(--primary); }
+
+  .divider {
+    height: 1px;
+    background: var(--outline-variant);
+    margin: 24px 0;
+  }
+
+  .roadmap-row {
+    display: flex;
+    gap: 32px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--outline-variant);
+    align-items: center;
+  }
+  .roadmap-row:last-child { border-bottom: none; }
+  .roadmap-row strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    color: var(--on-surface);
+    font-weight: 600;
+  }
+  .roadmap-row p { font-size: 17px; margin-top: 4px; }
+
+  .funds-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--outline-variant);
+    font-size: 18px;
+  }
+  .funds-row strong { color: var(--primary); font-family: 'Space Grotesk', sans-serif; }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    box-shadow: 0 8px 32px rgba(101, 221, 147, 0.3);
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: TITLE -->
+<section class="slide">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">01 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="slide-content" style="justify-content: center;">
+    <div class="eyebrow">Jordan · 2026</div>
+    <h1>Book the pitch.<br><span class="highlight">Play the game.</span></h1>
+    <p class="tagline">Jordan's first unified sports venue platform.<br>Discover, book, and pay — instantly.</p>
+  </div>
+</section>
+
+<!-- SLIDE 2: PROBLEM -->
+<section class="slide light">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">02 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">The Problem</div>
+    <h2>Booking a pitch in Jordan<br>is broken.</h2>
+    <ul>
+      <li><strong>Fragmented:</strong> Venues live on WhatsApp, Instagram DMs, and phone calls</li>
+      <li><strong>Opaque pricing:</strong> Rates change by day, time, and who you know</li>
+      <li><strong>No availability visibility:</strong> You call 5 places before finding an open slot</li>
+      <li><strong>Payment friction:</strong> Cash, bank screenshots, trust-based bookings</li>
+      <li><strong>Owners lose revenue:</strong> No-shows, double-bookings, zero analytics</li>
+    </ul>
+    <div class="quote">75%+ of venue bookings in Jordan still happen via direct messaging.</div>
+  </div>
+</section>
+
+<!-- SLIDE 3: SOLUTION -->
+<section class="slide">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">03 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">The Solution</div>
+    <h2>One platform.<br>Three sides of the market.</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h4>Players</h4>
+        <p>Discover venues, see real-time availability, book &amp; pay instantly via CliQ.</p>
+      </div>
+      <div class="card">
+        <h4>Venue Owners</h4>
+        <p>A full dashboard to manage pricing, availability, bookings, and revenue.</p>
+      </div>
+      <div class="card">
+        <h4>Admins</h4>
+        <p>Onboard venues, verify payments, resolve disputes from one console.</p>
+      </div>
+    </div>
+    <p style="margin-top: 48px; font-size: 26px; color: inherit; font-family: 'Space Grotesk', sans-serif; font-weight: 500;">
+      One app. One source of truth. <span class="highlight">Instant confirmations.</span>
+    </p>
+  </div>
+</section>
+
+<!-- SLIDE 4: PRODUCT SUITE -->
+<section class="slide light">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">04 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Product Suite</div>
+    <h2>We don't ship one app —<br>we ship a stack.</h2>
+    <table>
+      <thead><tr><th>Product</th><th>Audience</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mobile App</strong> (iOS + Android)</td><td>Players</td><td>Browse, book, pay, rebook</td></tr>
+        <tr><td><strong>Owner Dashboard</strong> (Web)</td><td>Venue owners</td><td>Venues, pricing, payouts</td></tr>
+        <tr><td><strong>Admin Console</strong> (Web)</td><td>PlayMaker team</td><td>Verification, disputes, support</td></tr>
+        <tr><td><strong>Marketing Website</strong></td><td>Everyone</td><td>Waitlist, discovery, brand</td></tr>
+        <tr><td><strong>API + Infrastructure</strong></td><td>Internal</td><td>Auth, booking engine, push</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 32px; font-size: 22px; font-family: 'Space Grotesk', sans-serif; font-weight: 500; color: var(--primary);">
+      All built. All deployed. Launching Q2 2026.
+    </p>
+  </div>
+</section>
+
+<!-- SLIDE 5: FEATURES -->
+<section class="slide">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">05 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Key Features</div>
+    <h2>Purpose-built for each side.</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h4>For Players</h4>
+        <ul>
+          <li>Real-time availability</li>
+          <li>Recurring bookings</li>
+          <li>CliQ instant payment</li>
+          <li>Arabic + English, RTL</li>
+          <li>Push notifications</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>For Owners</h4>
+        <ul>
+          <li>Dynamic pricing</li>
+          <li>Revenue analytics</li>
+          <li>Proof verification</li>
+          <li>Multi-venue mgmt</li>
+          <li>Occupancy reports</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>For Admins</h4>
+        <ul>
+          <li>Venue onboarding</li>
+          <li>Dispute resolution</li>
+          <li>Platform analytics</li>
+          <li>Role-based access</li>
+          <li>Audit logs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: WHY NOW -->
+<section class="slide">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">06 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="hero-glow" style="background: radial-gradient(circle at 70% 30%, rgba(63, 186, 116, 0.2) 0%, rgba(15, 21, 18, 0) 60%);"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Why Now</div>
+    <h2>The perfect storm<br>for digital sports booking.</h2>
+    <div class="stats">
+      <div class="stat"><div class="val">90%+</div><div class="lbl">Smartphone Penetration</div></div>
+      <div class="stat"><div class="val">5M+</div><div class="lbl">CliQ Active Users</div></div>
+      <div class="stat"><div class="val">63%</div><div class="lbl">Jordanians Under 30</div></div>
+    </div>
+    <ul style="margin-top: 36px;">
+      <li>Post-COVID shift: consumers expect app-first booking (Careem, Talabat set the standard)</li>
+      <li>CliQ backed by Central Bank of Jordan — digital payments are mainstream</li>
+      <li>Underserved vertical: food delivery is solved — sports is next</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SLIDE 7: MARKET -->
+<section class="slide light">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">07 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Market Size</div>
+    <h2>Large. Addressable.<br>Expandable.</h2>
+    <div class="stats">
+      <div class="stat"><div class="val">$180M</div><div class="lbl">TAM · Jordan</div></div>
+      <div class="stat"><div class="val">$90M</div><div class="lbl">SAM · Major Cities</div></div>
+      <div class="stat"><div class="val">$5M</div><div class="lbl">SOM · Year 1</div></div>
+    </div>
+    <p style="margin-top: 48px;">Football, padel, basketball, tennis across Amman, Irbid, and Zarqa.</p>
+    <p style="margin-top: 12px;"><strong style="color: inherit;">Expansion path:</strong> GCC (Saudi Arabia, UAE) — same payment rails, same cultural context.</p>
+  </div>
+</section>
+
+<!-- SLIDE 8: BUSINESS MODEL -->
+<section class="slide">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">08 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Business Model</div>
+    <h2>Commission-based.<br>Transaction-aligned.</h2>
+    <div class="grid-2">
+      <div>
+        <h3>How we earn</h3>
+        <ul>
+          <li><strong>10–15% commission</strong> on every confirmed booking</li>
+          <li><strong>Zero upfront cost</strong> for venue owners</li>
+          <li><strong>Premium tier:</strong> featured listings ($30–50/mo)</li>
+          <li><strong>Payment margin</strong> on CliQ/Stripe</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Unit economics</h3>
+        <div style="margin-top: 16px;">
+          <div class="funds-row"><span>Avg booking value</span><strong>20 JOD (~$28)</strong></div>
+          <div class="funds-row"><span>Take rate</span><strong>12%</strong></div>
+          <div class="funds-row"><span>Contribution / booking</span><strong>~$3.40</strong></div>
+          <div class="funds-row" style="border-bottom: none;"><span>Payback period</span><strong>&lt; 3 months</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: TRACTION -->
+<section class="slide light">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">09 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Traction</div>
+    <h2>Pre-launch. Production-ready.</h2>
+    <div class="grid-2" style="margin-top: 24px;">
+      <div class="card"><h4>4 Production Apps</h4><p>Mobile, owner dashboard, admin console, marketing site — all live.</p></div>
+      <div class="card"><h4>Full Bilingual (AR/EN)</h4><p>Native RTL support — rare among Jordanian SaaS platforms.</p></div>
+      <div class="card"><h4>Deployed Infrastructure</h4><p>Hetzner + Docker + nginx + SSL + MySQL, fully containerized.</p></div>
+      <div class="card"><h4>CliQ Integration Live</h4><p>Jordan's local payment rail — integrated and tested end-to-end.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: TECH -->
+<section class="slide">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">10 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Technology</div>
+    <h2>Built for scale.<br>Shipped lean.</h2>
+    <div class="grid-2" style="margin-top: 24px;">
+      <div class="card">
+        <h4>Backend &amp; Data</h4>
+        <ul>
+          <li>ASP.NET Core 9</li>
+          <li>EF Core + MySQL 8</li>
+          <li>JWT + refresh tokens</li>
+          <li>Firebase push notifications</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Client &amp; Infra</h4>
+        <ul>
+          <li>Flutter 3 (iOS + Android, one codebase)</li>
+          <li>React 19 + Vite 6 + Tailwind</li>
+          <li>Docker Compose, nginx, Let's Encrypt</li>
+          <li>Hetzner VPS, CI-ready</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top: 40px; font-size: 26px; font-family: 'Space Grotesk', sans-serif; font-weight: 500; color: var(--primary);">
+      One founder. Full stack. Production ready.
+    </p>
+  </div>
+</section>
+
+<!-- SLIDE 11: GTM -->
+<section class="slide light">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">11 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Go-to-Market</div>
+    <h2>Beachhead. Scale. Region.</h2>
+    <div class="grid-3">
+      <div class="card">
+        <span class="pill">Phase 1</span>
+        <h4 style="margin-top: 14px;">Amman Beachhead</h4>
+        <p>Months 1–3. Onboard 20 football &amp; padel venues. Zero-commission intro. Paid social.</p>
+      </div>
+      <div class="card">
+        <span class="pill">Phase 2</span>
+        <h4 style="margin-top: 14px;">Amman Scale</h4>
+        <p>Months 4–9. 100+ venues, 10k+ players. Referral program. Tournament features.</p>
+      </div>
+      <div class="card">
+        <span class="pill">Phase 3</span>
+        <h4 style="margin-top: 14px;">National + GCC</h4>
+        <p>Year 2. Irbid, Zarqa, Aqaba. Saudi Arabia pilot via Riyadh.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12: COMPETITION -->
+<section class="slide">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">12 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Competition</div>
+    <h2>No one owns this market — yet.</h2>
+    <table>
+      <thead><tr><th>Competitor</th><th>Gap We Fill</th></tr></thead>
+      <tbody>
+        <tr><td><strong>WhatsApp / Instagram</strong> (status quo)</td><td>No availability, no payments, no records</td></tr>
+        <tr><td><strong>Generic tools</strong> (Calendly, etc.)</td><td>No sports context, no local pay, no Arabic</td></tr>
+        <tr><td><strong>International</strong> (Playtomic)</td><td>No CliQ, no Arabic-first, no local venues</td></tr>
+        <tr><td><strong>Venue-specific apps</strong></td><td>Fragmented — one app per venue</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 28px;"><strong style="color: inherit;">Our moat:</strong> Jordan-first product · bilingual by default · CliQ native · three-sided network effect.</p>
+  </div>
+</section>
+
+<!-- SLIDE 13: ROADMAP -->
+<section class="slide light">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">13 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Roadmap</div>
+    <h2>From launch to Series A.</h2>
+    <div style="margin-top: 20px;">
+      <div class="roadmap-row"><div style="width: 130px;"><span class="pill">Q2 2026</span></div><div><strong>Launch</strong><p>Amman · football + padel · CliQ payments</p></div></div>
+      <div class="roadmap-row"><div style="width: 130px;"><span class="pill">Q3 2026</span></div><div><strong>Expand Payments + Social</strong><p>Stripe integration · league features · player profiles</p></div></div>
+      <div class="roadmap-row"><div style="width: 130px;"><span class="pill">Q4 2026</span></div><div><strong>Scale to 500 Venues</strong><p>Tournament hosting · team matchmaking</p></div></div>
+      <div class="roadmap-row"><div style="width: 130px;"><span class="pill">Q2 2027</span></div><div><strong>Regional Expansion</strong><p>Saudi Arabia pilot · Riyadh launch</p></div></div>
+      <div class="roadmap-row"><div style="width: 130px;"><span class="pill">Q4 2027</span></div><div><strong>Series A Readiness</strong><p>3 countries · $10M+ GMV run-rate</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14: THE ASK -->
+<section class="slide">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">14 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="hero-glow" style="background: radial-gradient(circle at 80% 50%, rgba(63, 186, 116, 0.2) 0%, rgba(15, 21, 18, 0) 60%);"></div>
+  <div class="slide-content">
+    <div class="eyebrow">The Ask</div>
+    <h2>Raising <span class="highlight">$250K</span> Pre-Seed</h2>
+    <div class="grid-2" style="margin-top: 20px;">
+      <div>
+        <h3>Use of Funds</h3>
+        <div style="margin-top: 16px;">
+          <div class="funds-row"><span>Venue acquisition &amp; sales</span><strong>40%</strong></div>
+          <div class="funds-row"><span>Marketing &amp; user acquisition</span><strong>30%</strong></div>
+          <div class="funds-row"><span>Team (mobile dev + ops)</span><strong>20%</strong></div>
+          <div class="funds-row" style="border-bottom: none;"><span>Infra &amp; legal</span><strong>10%</strong></div>
+        </div>
+      </div>
+      <div>
+        <h3>Year 1 Milestones</h3>
+        <ul>
+          <li>100 onboarded venues</li>
+          <li>10,000 registered players</li>
+          <li>$500K GMV run-rate</li>
+          <li>Break-even unit economics</li>
+          <li>Seed round readiness</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15: TEAM -->
+<section class="slide light">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">15 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="slide-content">
+    <div class="eyebrow">Team</div>
+    <h2>Founder-led. Builder-first.</h2>
+    <div style="margin-top: 32px; display: flex; gap: 32px; align-items: flex-start;">
+      <div class="avatar">M</div>
+      <div style="flex: 1;">
+        <h3 style="color: inherit; margin-bottom: 6px;">Mohammed Alfaris</h3>
+        <p style="font-size: 20px; color: var(--primary); font-family: 'Space Grotesk', sans-serif; font-weight: 500;">Founder &amp; CEO</p>
+        <ul style="margin-top: 16px;">
+          <li>Full-stack engineer — backend, mobile, web, DevOps</li>
+          <li>Built and deployed the entire PlayMaker JO platform solo</li>
+          <li>Based in Amman, Jordan</li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider" style="margin-top: 40px;"></div>
+    <h4>Hiring &amp; Advisors</h4>
+    <p style="font-size: 18px;">Seeking advisors in sports industry, Jordanian venue ownership, and GCC expansion.<br>First hires: Mobile Engineer · Venue Operations Lead.</p>
+  </div>
+</section>
+
+<!-- SLIDE 16: CONTACT -->
+<section class="slide">
+  <div class="corner-mark"></div>
+  <div class="corner-brand">PlayMaker JO</div>
+  <div class="slide-number">16 / 16</div>
+  <div class="brand-strip"></div>
+  <div class="kinetic-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="slide-content" style="justify-content: center;">
+    <div class="eyebrow">Let's Talk</div>
+    <h1 style="font-size: 68px;">Let's build the future<br>of <span class="highlight">sports in Jordan.</span></h1>
+    <div style="margin-top: 48px; font-size: 22px; line-height: 2; font-family: 'Space Grotesk', sans-serif;">
+      <div><span style="color: var(--primary); font-weight: 600;">Web</span> &nbsp;·&nbsp; playmakerjo.com</div>
+      <div><span style="color: var(--primary); font-weight: 600;">Email</span> &nbsp;·&nbsp; amermohammed500@gmail.com</div>
+      <div><span style="color: var(--primary); font-weight: 600;">Founder</span> &nbsp;·&nbsp; Mohammed Alfaris · Amman, Jordan</div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
