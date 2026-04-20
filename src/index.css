@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Material Symbols defaults */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(27, 33, 30, 0.4);
+  backdrop-filter: blur(20px);
+}
+
+/* Kinetic dot-grid background */
+.kinetic-grid {
+  background-image: radial-gradient(
+    circle at 2px 2px,
+    rgba(101, 221, 147, 0.05) 1px,
+    transparent 0
+  );
+  background-size: 40px 40px;
+}
+
+/* Hero radial glow */
+.hero-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(63, 186, 116, 0.15) 0%,
+    rgba(15, 21, 18, 0) 70%
+  );
+}
+
+/* Selection highlight */
+::selection {
+  background-color: rgba(101, 221, 147, 0.3);
+  color: #65dd93;
+}
+
+/* Arabic RTL — Cairo font (exclude icon font) */
+[dir='rtl'] body {
+  font-family: 'Cairo', sans-serif;
+}
+
+[dir='rtl'] *:not(.material-symbols-outlined) {
+  font-family: 'Cairo', sans-serif;
+}
+
+[dir='rtl'] .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+}
+
+[dir='rtl'] .font-headline {
+  font-family: 'Cairo', sans-serif;
+  letter-spacing: 0;
+}
