@@ -60,26 +60,26 @@ export default function ForVenuesSection() {
   }
 
   return (
-    <section className="bg-[#121815] py-16">
-      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section className="bg-[#121815] py-12 sm:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start lg:items-center">
         {/* Left: Feature list */}
         <div>
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 mb-5 sm:mb-6">
             <span className="text-primary text-sm font-bold tracking-tight">{t('for_venues_badge')}</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-headline font-bold tracking-tight text-white mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-headline font-bold tracking-tight text-white mb-8 sm:mb-12">
             {t('venues_headline')}
           </h2>
 
-          <div className="space-y-10">
+          <div className="space-y-6 sm:space-y-10">
             {features.map(({ icon, title, description }) => (
-              <div key={icon} className="flex gap-6">
+              <div key={icon} className="flex gap-4 sm:gap-6">
                 <div className="mt-1 w-10 h-10 shrink-0 flex items-center justify-center text-primary">
                   <span className="material-symbols-outlined text-3xl">{icon}</span>
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-2">{title}</h4>
-                  <p className="text-on-surface-variant">{description}</p>
+                  <h4 className="text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">{title}</h4>
+                  <p className="text-on-surface-variant text-sm sm:text-base">{description}</p>
                 </div>
               </div>
             ))}
@@ -87,7 +87,7 @@ export default function ForVenuesSection() {
         </div>
 
         {/* Right: Registration form */}
-        <div className="bg-surface-container p-10 rounded-3xl border border-outline-variant/20 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.06)]">
+        <div className="bg-surface-container p-6 sm:p-8 lg:p-10 rounded-3xl border border-outline-variant/20 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.06)]">
           {submitted ? (
             <div className="flex flex-col items-center justify-center gap-6 py-12 text-center">
               <span className="material-symbols-outlined text-primary text-6xl">check_circle</span>
@@ -96,9 +96,9 @@ export default function ForVenuesSection() {
             </div>
           ) : (
             <>
-              <h3 className="text-2xl font-bold text-white mb-8">{t('list_venue')}</h3>
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8">{t('list_venue')}</h3>
+              <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-outline uppercase tracking-wider">
                       {t('label_owner_name')}
@@ -127,7 +127,7 @@ export default function ForVenuesSection() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-outline uppercase tracking-wider">
                       {t('label_city')}
