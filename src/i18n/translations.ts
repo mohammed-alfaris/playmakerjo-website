@@ -1,5 +1,10 @@
 export const translations = {
   en: {
+    // Meta
+    meta_title: 'PlayMaker JO — Book Sports Venues in Jordan',
+    meta_description:
+      'Seamlessly book football pitches, basketball courts, and sports fields across Jordan. Engineered for excellence.',
+
     // NavBar
     nav_venues: 'Venues',
     join_waitlist: 'Join Waitlist',
@@ -87,6 +92,11 @@ export const translations = {
   },
 
   ar: {
+    // Meta
+    meta_title: 'PlayMaker JO — احجز الملاعب الرياضية في الأردن',
+    meta_description:
+      'احجز ملاعب كرة القدم وكرة السلة والساحات الرياضية في جميع أنحاء الأردن بكل سهولة. مصمم للتميز.',
+
     // NavBar
     nav_venues: 'الملاعب',
     join_waitlist: 'انضم لقائمة الانتظار',

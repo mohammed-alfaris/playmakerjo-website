@@ -25,6 +25,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.dir = dir
     document.documentElement.lang = lang
+    document.title = translations[lang].meta_title
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', translations[lang].meta_description)
   }, [lang, dir])
 
   const t = (key: TranslationKey) => translations[lang][key]
