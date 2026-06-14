@@ -44,7 +44,7 @@ export default function HeroSection() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
-          <div className="w-full sm:w-auto bg-primary-container text-on-primary-container px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-[0_10px_20px_-5px_rgba(63,186,116,0.4)] flex items-center justify-center gap-3 cursor-default select-none">
+          <div className="w-full sm:w-auto bg-primary-container text-on-primary-container px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold text-base sm:text-lg shadow-[0_10px_20px_-5px_rgba(161,255,107,0.4)] flex items-center justify-center gap-3 cursor-default select-none">
             <span className="material-symbols-outlined text-2xl">android</span>
             {t('cta_android')}
           </div>

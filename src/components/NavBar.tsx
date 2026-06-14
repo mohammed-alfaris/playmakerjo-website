@@ -8,16 +8,10 @@ export default function NavBar() {
       <div className="flex justify-between items-center px-4 sm:px-6 md:px-8 py-3 sm:py-4 max-w-7xl mx-auto gap-2">
         {/* Logo */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <div className="w-8 h-8 bg-primary-container rounded-md flex items-center justify-center shrink-0">
-            <span
-              className="material-symbols-outlined text-on-primary-container text-xl"
-              style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              sports_soccer
-            </span>
-          </div>
-          <span className="text-lg sm:text-xl md:text-2xl font-bold tracking-tighter text-primary font-headline truncate">
-            PlayMaker JO
+          <img src="/logo-mark.png" alt="PlayMaker" className="w-8 h-8 shrink-0" />
+          <span className="text-lg sm:text-xl md:text-2xl font-bold tracking-tighter font-headline truncate">
+            <span className="text-white">PLAY</span>
+            <span className="text-primary">MAKER</span>
           </span>
         </div>
 
