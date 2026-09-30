@@ -11,11 +11,12 @@ export default function ForPlayersSection() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
+  // "invalid" is the user's typo; "failed" is ours (network, server) — different messages.
+  const [error, setError] = useState<false | 'invalid' | 'failed'>(false)
 
   const handleJoin = async () => {
     if (!isValidEmail(email)) {
-      setError(true)
+      setError('invalid')
       return
     }
     setError(false)
@@ -25,7 +26,7 @@ export default function ForPlayersSection() {
       setSubmitted(true)
       setEmail('')
     } catch {
-      setError(true)
+      setError('failed')
     } finally {
       setLoading(false)
     }
@@ -101,7 +102,7 @@ export default function ForPlayersSection() {
               </button>
             </div>
             {error && (
-              <p className="text-error text-sm px-1">{t('invalid_email')}</p>
+              <p role="alert" className="text-error text-sm px-1">{t(error === 'failed' ? 'submit_failed' : 'invalid_email')}</p>
             )}
           </div>
         )}

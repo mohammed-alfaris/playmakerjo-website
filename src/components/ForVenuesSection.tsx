@@ -9,6 +9,7 @@ export default function ForVenuesSection() {
   const [selectedSports, setSelectedSports] = useState<string[]>(['soccer'])
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [failed, setFailed] = useState(false)
 
   const [form, setForm] = useState({
     contactName: '',
@@ -41,6 +42,7 @@ export default function ForVenuesSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+    setFailed(false)
     try {
       await registerVenueWaitlist({
         contactName: form.contactName,
@@ -52,8 +54,9 @@ export default function ForVenuesSection() {
       })
       setSubmitted(true)
     } catch {
-      // still show success — API may be offline during dev
-      setSubmitted(true)
+      // Never claim success here: a venue owner who sees "registered" when nothing was saved
+      // is a lead lost without anyone knowing. Say so, keep what they typed, let them retry.
+      setFailed(true)
     } finally {
       setLoading(false)
     }
@@ -196,6 +199,10 @@ export default function ForVenuesSection() {
                     })}
                   </div>
                 </div>
+
+                {failed && (
+                  <p role="alert" className="text-error text-sm px-1">{t('submit_failed')}</p>
+                )}
 
                 <button
                   type="submit"

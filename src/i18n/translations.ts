@@ -48,6 +48,7 @@ export const translations = {
     join: 'Join',
     joined_success: "You're on the list! We'll notify you at launch.",
     invalid_email: 'Please enter a valid email address.',
+    submit_failed: "That didn't go through. Please check your connection and try again.",
 
     // For Venues
     for_venues_badge: '🏟️ For Venues',
@@ -138,6 +139,7 @@ export const translations = {
     join: 'انضم',
     joined_success: 'أنت في القائمة! سنُعلمك عند الإطلاق.',
     invalid_email: 'يرجى إدخال بريد إلكتروني صحيح.',
+    submit_failed: 'لم يتم الإرسال. تأكد من الاتصال وحاول مرة أخرى.',
 
     // For Venues
     for_venues_badge: '🏟️ لأصحاب الملاعب',
