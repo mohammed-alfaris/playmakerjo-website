@@ -25,7 +25,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.dir = dir
     document.documentElement.lang = lang
-    document.title = translations[lang].meta_title
+    // The page title is set by App, which knows which page is showing.
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute('content', translations[lang].meta_description)

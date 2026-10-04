@@ -90,6 +90,13 @@ export const translations = {
     footer_support: 'Support',
     footer_partners: 'Partners',
     footer_copyright: '© 2024 PlayMaker JO.',
+    footer_delete_account: 'Delete account',
+
+    // Legal pages
+    legal_home: 'Home',
+    legal_updated: 'Last updated',
+    legal_questions: 'Questions?',
+    legal_write_to: 'Write to us at',
   },
 
   ar: {
@@ -179,6 +186,13 @@ export const translations = {
     footer_support: 'الدعم',
     footer_partners: 'الشركاء',
     footer_copyright: '© ٢٠٢٤ PlayMaker JO.',
+    footer_delete_account: 'حذف الحساب',
+
+    // Legal pages
+    legal_home: 'الرئيسية',
+    legal_updated: 'آخر تحديث',
+    legal_questions: 'لديك سؤال؟',
+    legal_write_to: 'راسلنا على',
   },
 } as const
 
