@@ -1,7 +1,10 @@
 import { useT } from '@/i18n/LanguageContext'
 
-/** [onHome]: the waitlist button scrolls to the form; elsewhere it goes back to it. */
-export default function NavBar({ onHome = true }: { onHome?: boolean }) {
+/**
+ * [onHome]: the waitlist button scrolls to the form; elsewhere it goes back to it.
+ * [waitlist]: off on the booking pages, where a guest is booking a venue, not joining a list.
+ */
+export default function NavBar({ onHome = true, waitlist = true }: { onHome?: boolean; waitlist?: boolean }) {
   const { t, lang, setLang } = useT()
 
   const goToWaitlist = () => {
@@ -30,12 +33,14 @@ export default function NavBar({ onHome = true }: { onHome?: boolean }) {
             <span className="material-symbols-outlined text-lg">language</span>
             <span>{lang === 'en' ? 'عر' : 'EN'}</span>
           </button>
-          <button
-            onClick={goToWaitlist}
-            className="bg-primary-container text-on-primary-container px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg font-bold tracking-tight hover:brightness-110 active:scale-95 transition-all duration-200 whitespace-nowrap text-sm sm:text-base"
-          >
-            {t('join_waitlist')}
-          </button>
+          {waitlist && (
+            <button
+              onClick={goToWaitlist}
+              className="bg-primary-container text-on-primary-container px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg font-bold tracking-tight hover:brightness-110 active:scale-95 transition-all duration-200 whitespace-nowrap text-sm sm:text-base"
+            >
+              {t('join_waitlist')}
+            </button>
+          )}
         </div>
       </div>
     </nav>
