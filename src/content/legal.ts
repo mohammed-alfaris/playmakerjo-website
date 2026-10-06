@@ -26,14 +26,14 @@ export interface LegalDoc {
 
 export type LegalPageKey = 'privacy' | 'terms' | 'deleteAccount'
 
-const UPDATED = { en: '4 October 2026', ar: '4 تشرين الأول 2026' }
+const UPDATED = { en: '6 October 2026', ar: '6 تشرين الأول 2026' }
 
 const privacyEn: LegalDoc = {
   title: 'Privacy Policy',
   updated: UPDATED.en,
   intro: [
     'PlayMaker JO ("PlayMaker", "we") runs the PlayMaker JO app, the venue dashboard and this website. This policy explains what personal data we collect, why we use it, who we share it with, and the choices you have.',
-    'It covers players who book through the app, and venue owners and their staff who use the dashboard.',
+    'It covers players who book through the app, guests who book a venue from its booking link on this website without an account, and venue owners and their staff who use the dashboard.',
   ],
   sections: [
     {
@@ -43,6 +43,7 @@ const privacyEn: LegalDoc = {
           list: [
             'Account details: your name, email address, phone number and password. Passwords are stored only in a scrambled (hashed) form that we cannot read. If you sign in with Google or Apple, they share your name and email address with us.',
             'Bookings: the venue, pitch, sport, date, time and price of each booking, its status, and any cancellation or refund.',
+            'Booking without an account: when you book from a venue’s link on this website, we collect the name and mobile number you enter and any note you write, with the booking. Your browser keeps the link to your booking so you can find it again; we set no other cookies or trackers.',
             'Payments: we do not take card payments. When you pay a deposit by CliQ, we keep the screenshot of the transfer you upload and the amounts paid and refunded.',
             'Location: if you allow it, the app uses your phone’s location to show venues near you. It is used on your phone only and is not sent to or stored on our servers.',
             'Notifications: a device token from Google Firebase Cloud Messaging, so we can send booking updates to your phone.',
@@ -74,7 +75,7 @@ const privacyEn: LegalDoc = {
       blocks: [
         {
           list: [
-            'The venue you book: your name, phone number and the booking details, so the venue can manage the booking and contact you about it. Venues may keep their own record of you as a customer. We do not give venues your email address.',
+            'The venue you book: your name, phone number and the booking details (and, for a CliQ deposit, the screenshot you upload), so the venue can manage the booking and contact you about it. This is the same whether you book in the app or from the venue’s link. Venues may keep their own record of you as a customer. We do not give venues your email address.',
             'Service providers that help us run PlayMaker: Hetzner Online (our servers), Google Firebase (push notifications), Google and Apple (if you choose to sign in with them) and OpenStreetMap (map images).',
             'Authorities, when the law requires it, or when needed to protect the safety and rights of our users and of PlayMaker.',
           ],
@@ -114,6 +115,7 @@ const privacyEn: LegalDoc = {
             'Delete your account in the app (Profile → Delete account), or by asking us — see playmakerjo.com/delete-account.',
             'Turn off notifications in the app or in your phone’s settings, and turn off location access in your phone’s settings.',
             'Ask us for a copy of your data, or to correct it, by emailing support@playmakerjo.com.',
+            'If you booked from a venue’s link without an account, email support@playmakerjo.com from any address with the mobile number you used, and we will remove your name and number from those bookings.',
           ],
         },
       ],
@@ -154,7 +156,7 @@ const privacyAr: LegalDoc = {
   updated: UPDATED.ar,
   intro: [
     'تدير PlayMaker JO ("PlayMaker" أو "نحن") تطبيق PlayMaker JO ولوحة تحكم الملاعب وهذا الموقع. توضّح هذه السياسة البيانات الشخصية التي نجمعها، ولماذا نستخدمها، ومع من نشاركها، والخيارات المتاحة لك.',
-    'تشمل هذه السياسة اللاعبين الذين يحجزون عبر التطبيق، وأصحاب الملاعب وموظفيهم الذين يستخدمون لوحة التحكم.',
+    'تشمل هذه السياسة اللاعبين الذين يحجزون عبر التطبيق، والضيوف الذين يحجزون ملعباً من رابط الحجز الخاص به على هذا الموقع دون حساب، وأصحاب الملاعب وموظفيهم الذين يستخدمون لوحة التحكم.',
   ],
   sections: [
     {
@@ -164,6 +166,7 @@ const privacyAr: LegalDoc = {
           list: [
             'بيانات الحساب: اسمك وبريدك الإلكتروني ورقم هاتفك وكلمة المرور. تُخزَّن كلمات المرور بصيغة مشفّرة لا يمكننا قراءتها. إذا سجّلت الدخول عبر Google أو Apple، فإنهما يشاركان معنا اسمك وبريدك الإلكتروني.',
             'الحجوزات: الملعب والأرضية والرياضة والتاريخ والوقت والسعر لكل حجز، وحالته، وأي إلغاء أو استرداد.',
+            'الحجز بدون حساب: عندما تحجز من رابط ملعب على هذا الموقع، نجمع الاسم ورقم الموبايل اللذين تدخلهما وأي ملاحظة تكتبها، مع الحجز. يحفظ متصفحك رابط حجزك لتعود إليه؛ ولا نضع أي ملفات تعريف ارتباط أو أدوات تتبّع أخرى.',
             'المدفوعات: لا نستقبل الدفع بالبطاقات. عند دفع العربون عبر كليك (CliQ)، نحتفظ بلقطة شاشة التحويل التي ترفعها وبالمبالغ المدفوعة والمستردة.',
             'الموقع: إذا سمحت بذلك، يستخدم التطبيق موقع هاتفك لعرض الملاعب القريبة منك. يُستخدم الموقع على هاتفك فقط، ولا يُرسَل إلى خوادمنا ولا يُخزَّن عليها.',
             'الإشعارات: رمز جهاز من خدمة Google Firebase Cloud Messaging لنتمكّن من إرسال تحديثات الحجز إلى هاتفك.',
@@ -195,7 +198,7 @@ const privacyAr: LegalDoc = {
       blocks: [
         {
           list: [
-            'الملعب الذي تحجزه: اسمك ورقم هاتفك وتفاصيل الحجز، ليتمكّن الملعب من إدارة الحجز والتواصل معك بشأنه. قد تحتفظ الملاعب بسجلّها الخاص لك كعميل. لا نعطي الملاعب بريدك الإلكتروني.',
+            'الملعب الذي تحجزه: اسمك ورقم هاتفك وتفاصيل الحجز (وصورة التحويل التي ترفعها عند دفع العربون عبر كليك)، ليتمكّن الملعب من إدارة الحجز والتواصل معك بشأنه. وهذا سواء حجزت من التطبيق أو من رابط الملعب. قد تحتفظ الملاعب بسجلّها الخاص لك كعميل. لا نعطي الملاعب بريدك الإلكتروني.',
             'مزوّدو الخدمات الذين يساعدوننا في تشغيل PlayMaker: ‏Hetzner Online (الخوادم)، وGoogle Firebase (الإشعارات)، وGoogle وApple (إذا اخترت تسجيل الدخول عبرهما)، وOpenStreetMap (صور الخرائط).',
             'الجهات الرسمية، عندما يتطلّب القانون ذلك، أو عند الحاجة لحماية سلامة مستخدمينا وحقوقهم وحقوق PlayMaker.',
           ],
@@ -235,6 +238,7 @@ const privacyAr: LegalDoc = {
             'حذف حسابك من التطبيق (الملف الشخصي ← حذف الحساب)، أو بطلب منّا — راجع playmakerjo.com/delete-account.',
             'إيقاف الإشعارات من التطبيق أو من إعدادات هاتفك، وإيقاف الوصول إلى الموقع من إعدادات هاتفك.',
             'طلب نسخة من بياناتك أو تصحيحها بمراسلتنا على support@playmakerjo.com.',
+            'إذا حجزت من رابط ملعب دون حساب، راسلنا على support@playmakerjo.com من أي بريد مع رقم الموبايل الذي استخدمته، وسنزيل اسمك ورقمك من تلك الحجوزات.',
           ],
         },
       ],
